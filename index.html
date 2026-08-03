@@ -4,7 +4,6 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=yes" />
     <title>🎂 Dad's Birthday Board</title>
-    <!-- Font Awesome for icons -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css" />
     <style>
         * {
@@ -24,7 +23,6 @@
             position: relative;
         }
 
-        /* confetti overlay (tiny) */
         body::before {
             content: "🎉🎊🎈🎁🎂🎈🎊🎉🎁🎂🎈🎊🎉🎁🎂🎈🎊🎉🎁🎂🎈🎊🎉🎁🎂🎈🎊🎉🎁🎂🎈🎊🎉🎁🎂";
             position: absolute;
@@ -55,7 +53,6 @@
             z-index: 2;
         }
 
-        /* header */
         .birthday-header {
             text-align: center;
             margin-bottom: 1.8rem;
@@ -96,7 +93,23 @@
             word-break: break-word;
         }
 
-        /* add-box (form) — mobile first */
+        .sync-status {
+            font-size: 0.9rem;
+            background: rgba(255, 255, 200, 0.7);
+            backdrop-filter: blur(4px);
+            padding: 0.3rem 1.2rem;
+            border-radius: 60px;
+            display: inline-block;
+            margin-top: 8px;
+            color: #3d2b0f;
+            border: 2px solid #f1c40f;
+            font-weight: 600;
+        }
+
+        .sync-status i {
+            margin-right: 6px;
+        }
+
         .add-box {
             background: linear-gradient(145deg, #fff6df, #ffefc9);
             border-radius: 50px 50px 30px 30px;
@@ -230,7 +243,6 @@
             padding-right: 0.3rem;
         }
 
-        /* BOARD: grid of boxes — mobile friendly */
         .board-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -239,7 +251,6 @@
             padding: 0 0.2rem;
         }
 
-        /* each box = a card */
         .birthday-box {
             background: #fff9ec;
             border-radius: 44px 16px 44px 16px;
@@ -264,7 +275,6 @@
             z-index: 5;
         }
 
-        /* image inside box */
         .box-image {
             width: 100%;
             aspect-ratio: 4/3;
@@ -368,7 +378,6 @@
             color: #c9921a;
         }
 
-        /* responsive fine-tune */
         @media (max-width: 480px) {
             .birthday-header h1 {
                 font-size: 2.2rem;
@@ -436,7 +445,6 @@
             }
         }
 
-        /* fix for very large screens */
         @media (min-width: 1200px) {
             .board-grid {
                 grid-template-columns: repeat(4, 1fr);
@@ -447,13 +455,14 @@
 <body>
 
 <div class="board-wrapper">
-    <!-- header -->
     <div class="birthday-header">
         <h1><i class="fas fa-crown"></i> Dad's Board <i class="fas fa-birthday-cake"></i></h1>
         <div class="subhead"><i class="fas fa-heart" style="color:#c0392b;"></i>  add a box with photo & message</div>
+        <div class="sync-status" id="syncStatus">
+            <i class="fas fa-cloud"></i> <span id="syncText">Synced</span>
+        </div>
     </div>
 
-    <!-- add box -->
     <div class="add-box">
         <div class="input-row">
             <label for="messageInput"><i class="fas fa-pencil-alt"></i> Message</label>
@@ -470,7 +479,6 @@
         <div class="hint-text"><i class="fas fa-info-circle"></i> Press Ctrl+Enter to add</div>
     </div>
 
-    <!-- the board grid -->
     <div id="boardGrid" class="board-grid">
         <!-- empty state injected by JS -->
     </div>
@@ -478,18 +486,26 @@
 
 <script>
     (function() {
-        // DOM
+        // ----- DOM refs -----
         const boardGrid = document.getElementById('boardGrid');
         const messageInput = document.getElementById('messageInput');
         const imageInput = document.getElementById('imageInput');
         const addBtn = document.getElementById('addMessageBtn');
+        const syncText = document.getElementById('syncText');
 
-        // ----- storage (with image persistence) -----
+        // ----- Broadcast Channel for cross-device sync -----
+        const channel = new BroadcastChannel('dad_birthday_channel');
+
+        // ----- Storage key -----
+        const STORAGE_KEY = 'dadBirthdayBoxes';
+
+        // ----- State -----
         let boxes = [];
 
+        // ----- Load from localStorage -----
         function loadFromStorage() {
             try {
-                const stored = localStorage.getItem('dadBirthdayBoxes');
+                const stored = localStorage.getItem(STORAGE_KEY);
                 if (stored) {
                     boxes = JSON.parse(stored);
                 } else {
@@ -498,15 +514,14 @@
             } catch (e) {
                 boxes = [];
             }
-            // filter valid
             boxes = boxes.filter(b => b && typeof b.text === 'string');
         }
 
         function saveToStorage() {
-            localStorage.setItem('dadBirthdayBoxes', JSON.stringify(boxes));
+            localStorage.setItem(STORAGE_KEY, JSON.stringify(boxes));
         }
 
-        // ----- render board -----
+        // ----- Render -----
         function renderBoard() {
             if (!boardGrid) return;
             boardGrid.innerHTML = '';
@@ -523,7 +538,6 @@
                 const card = document.createElement('div');
                 card.className = 'birthday-box';
 
-                // image
                 if (box.imageDataUrl && box.imageDataUrl.trim() !== '') {
                     const img = document.createElement('img');
                     img.className = 'box-image';
@@ -538,13 +552,11 @@
                     card.appendChild(placeholder);
                 }
 
-                // message
                 const msgDiv = document.createElement('div');
                 msgDiv.className = 'box-message';
                 msgDiv.textContent = box.text || '💬 Happy Birthday!';
                 card.appendChild(msgDiv);
 
-                // delete button
                 const actionsDiv = document.createElement('div');
                 actionsDiv.className = 'box-actions';
                 const delBtn = document.createElement('button');
@@ -555,7 +567,6 @@
                     e.stopPropagation();
                     deleteBox(index);
                 });
-                // touch friendly
                 delBtn.addEventListener('touchend', function(e) {
                     e.preventDefault();
                     deleteBox(index);
@@ -567,16 +578,19 @@
             });
         }
 
-        // ----- delete -----
+        // ----- Delete -----
         function deleteBox(index) {
             if (index >= 0 && index < boxes.length) {
                 boxes.splice(index, 1);
                 saveToStorage();
                 renderBoard();
+                // broadcast deletion
+                channel.postMessage({ type: 'delete', index: index, all: boxes });
+                updateSyncStatus('Synced');
             }
         }
 
-        // ----- add new box (with image) -----
+        // ----- Add new box -----
         function addNewBox() {
             const text = messageInput.value.trim();
             if (text === '') {
@@ -596,7 +610,6 @@
                 };
                 reader.readAsDataURL(file);
             } else {
-                // no image or invalid -> store null
                 pushBox(text, null);
             }
         }
@@ -610,16 +623,71 @@
             saveToStorage();
             renderBoard();
 
-            // reset inputs
+            // broadcast to other devices
+            channel.postMessage({ type: 'add', box: newBox, all: boxes });
+
+            // reset
             messageInput.value = '';
             imageInput.value = '';
             messageInput.focus();
+            updateSyncStatus('Synced');
         }
 
-        // ----- events -----
+        // ----- Sync status UI -----
+        function updateSyncStatus(status) {
+            syncText.textContent = status;
+        }
+
+        // ----- Handle incoming messages from other devices -----
+        channel.onmessage = function(event) {
+            const data = event.data;
+            if (!data) return;
+
+            // Update sync status
+            updateSyncStatus('Syncing...');
+
+            if (data.type === 'add' && data.box) {
+                // Add the new box from another device
+                boxes.push(data.box);
+                saveToStorage();
+                renderBoard();
+                updateSyncStatus('Synced');
+            } else if (data.type === 'delete' && data.all) {
+                // Replace entire state with the broadcasted state
+                boxes = data.all;
+                saveToStorage();
+                renderBoard();
+                updateSyncStatus('Synced');
+            } else if (data.type === 'fullSync' && data.all) {
+                // Full sync from another device
+                boxes = data.all;
+                saveToStorage();
+                renderBoard();
+                updateSyncStatus('Synced');
+            }
+        };
+
+        // ----- Broadcast full state on load (to help new devices catch up) -----
+        function broadcastFullState() {
+            channel.postMessage({ type: 'fullSync', all: boxes });
+        }
+
+        // ----- Init -----
+        loadFromStorage();
+        renderBoard();
+
+        // After a short delay, broadcast full state to let other devices know
+        setTimeout(broadcastFullState, 500);
+
+        // Also broadcast when we load from storage (on page load)
+        window.addEventListener('load', function() {
+            // Re-broadcast after everything is loaded
+            setTimeout(broadcastFullState, 800);
+        });
+
+        // ----- Event listeners -----
         addBtn.addEventListener('click', addNewBox);
 
-        // Ctrl+Enter
         messageInput.addEventListener('keydown', function(e) {
             if (e.key === 'Enter' && (e.ctrlKey || e.metaKey)) {
                 e.preventDefault();
@@ -627,11 +695,21 @@
             }
         });
 
-        // ----- init -----
-        loadFromStorage();
-        renderBoard();
+        // Optional: sync when another tab updates storage (fallback)
+        window.addEventListener('storage', function(e) {
+            if (e.key === STORAGE_KEY && e.newValue) {
+                try {
+                    const newBoxes = JSON.parse(e.newValue);
+                    if (newBoxes) {
+                        boxes = newBoxes;
+                        renderBoard();
+                        updateSyncStatus('Synced');
+                    }
+                } catch (err) {}
+            }
+        });
 
-        console.log('🎂 Happy Birthday, Dad! 🎈');
+        console.log('🎂 Happy Birthday, Dad! 🎈 (Cross-device sync active)');
     })();
 </script>
 </body>
