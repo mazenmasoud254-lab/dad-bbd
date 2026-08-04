@@ -12,7 +12,6 @@
             box-sizing: border-box;
             font-family: 'Segoe UI', 'Poppins', Roboto, system-ui, sans-serif;
         }
-
         body {
             background: linear-gradient(145deg, #fceabb 0%, #f8b500 100%);
             min-height: 100vh;
@@ -22,7 +21,6 @@
             align-items: center;
             position: relative;
         }
-
         body::before {
             content: "🎉🎊🎈🎁🎂🎈🎊🎉🎁🎂🎈🎊🎉🎁🎂🎈🎊🎉🎁🎂🎈🎊🎉🎁🎂🎈🎊🎉🎁🎂🎈🎊🎉🎁🎂";
             position: absolute;
@@ -40,7 +38,6 @@
             line-height: 3.5rem;
             z-index: 0;
         }
-
         .board-wrapper {
             max-width: 1300px;
             width: 100%;
@@ -52,13 +49,11 @@
             position: relative;
             z-index: 2;
         }
-
         .birthday-header {
             text-align: center;
             margin-bottom: 1.8rem;
             padding: 0 0.3rem;
         }
-
         .birthday-header h1 {
             font-size: 2.8rem;
             font-weight: 800;
@@ -73,12 +68,10 @@
             box-shadow: 0 6px 0 #b34d2e;
             word-break: break-word;
         }
-
         .birthday-header h1 i {
             color: #f7b731;
             margin: 0 4px;
         }
-
         .subhead {
             font-size: 1.2rem;
             background: #fef7e0;
@@ -92,7 +85,6 @@
             border: 2px solid #f7d675;
             word-break: break-word;
         }
-
         .sync-status {
             font-size: 0.9rem;
             background: rgba(255, 255, 200, 0.7);
@@ -105,11 +97,9 @@
             border: 2px solid #f1c40f;
             font-weight: 600;
         }
-
         .sync-status i {
             margin-right: 6px;
         }
-
         .add-box {
             background: linear-gradient(145deg, #fff6df, #ffefc9);
             border-radius: 50px 50px 30px 30px;
@@ -119,18 +109,15 @@
             transition: 0.2s;
             border: 2px solid #f1c40f;
         }
-
         .add-box:hover {
             box-shadow: 0 18px 32px -6px #7a5d29, 0 0 0 5px #f1c40f, 0 0 0 12px #fcf1cf;
         }
-
         .input-row {
             display: flex;
             flex-direction: column;
             gap: 0.6rem;
             margin-bottom: 0.9rem;
         }
-
         .input-row label {
             font-weight: 700;
             color: #492e0e;
@@ -139,7 +126,6 @@
             align-items: center;
             gap: 8px;
         }
-
         .input-row textarea {
             width: 100%;
             padding: 0.8rem 1.2rem;
@@ -153,13 +139,11 @@
             resize: vertical;
             min-height: 70px;
         }
-
         .input-row textarea:focus {
             border-color: #b7950b;
             background: #fffffa;
             box-shadow: 0 0 0 6px #f9e79f;
         }
-
         .file-upload-wrapper {
             display: flex;
             align-items: center;
@@ -171,12 +155,10 @@
             border: 3px dashed #c9a84b;
             width: 100%;
         }
-
         .file-upload-wrapper i {
             font-size: 1.5rem;
             color: #a67c2b;
         }
-
         .file-upload-wrapper input[type="file"] {
             border: none;
             padding: 0.4rem 0;
@@ -187,7 +169,6 @@
             box-shadow: none;
             outline: none;
         }
-
         .file-upload-wrapper input[type="file"]::file-selector-button {
             background: #f1c40f;
             border: none;
@@ -200,12 +181,10 @@
             box-shadow: 0 3px 0 #b38b2a;
             font-size: 0.9rem;
         }
-
         .file-upload-wrapper input[type="file"]::file-selector-button:hover {
             background: #d4ac0d;
             transform: scale(0.96);
         }
-
         .action-btn {
             background: linear-gradient(145deg, #f7b731, #e67e22);
             border: none;
@@ -225,16 +204,13 @@
             letter-spacing: 1px;
             margin-top: 0.3rem;
         }
-
         .action-btn:active {
             transform: translateY(6px);
             box-shadow: 0 2px 0 #7a4a12;
         }
-
         .action-btn i {
             font-size: 1.8rem;
         }
-
         .hint-text {
             margin-top: 0.4rem;
             text-align: right;
@@ -242,7 +218,6 @@
             color: #6b4f1a;
             padding-right: 0.3rem;
         }
-
         .board-grid {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
@@ -250,7 +225,6 @@
             margin-top: 0.5rem;
             padding: 0 0.2rem;
         }
-
         .birthday-box {
             background: #fff9ec;
             border-radius: 44px 16px 44px 16px;
@@ -264,17 +238,14 @@
             transform: rotate(0.4deg);
             border: 2px solid #f7d44a;
         }
-
         .birthday-box:nth-child(even) {
             transform: rotate(-0.6deg);
         }
-
         .birthday-box:hover {
             transform: scale(1.01) rotate(0deg);
             box-shadow: 0 20px 36px -6px #a67c2b, 0 0 0 6px #f1c40f, 0 0 0 12px #fff6d0;
             z-index: 5;
         }
-
         .box-image {
             width: 100%;
             aspect-ratio: 4/3;
@@ -287,7 +258,6 @@
             transition: 0.15s;
             display: block;
         }
-
         .box-image-placeholder {
             width: 100%;
             aspect-ratio: 4/3;
@@ -305,13 +275,11 @@
             padding: 1rem;
             min-height: 120px;
         }
-
         .box-image-placeholder i {
             font-size: 2.6rem;
             margin-right: 8px;
             color: #b8862c;
         }
-
         .box-message {
             font-size: 1.1rem;
             background: #fdf3d6;
@@ -327,14 +295,12 @@
             text-align: center;
             line-height: 1.4;
         }
-
         .box-actions {
             display: flex;
             justify-content: flex-end;
             width: 100%;
             margin-top: 0.2rem;
         }
-
         .delete-btn {
             background: transparent;
             border: none;
@@ -349,17 +315,14 @@
             border: 2px solid #f7c9a0;
             touch-action: manipulation;
         }
-
         .delete-btn:hover {
             background: #f7c0b0;
             color: #8f1f1f;
             transform: scale(0.9);
         }
-
         .delete-btn:active {
             transform: scale(0.85);
         }
-
         .empty-board {
             grid-column: 1 / -1;
             text-align: center;
@@ -372,94 +335,72 @@
             font-weight: 700;
             border: 5px dashed #e6b422;
         }
-
         .empty-board i {
             margin-right: 12px;
             color: #c9921a;
         }
-
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(255, 241, 184, 0.85);
+            backdrop-filter: blur(6px);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            z-index: 999;
+            font-size: 2rem;
+            color: #5d3a1a;
+            font-weight: 700;
+        }
+        .loading-overlay i {
+            font-size: 4rem;
+            margin-bottom: 1rem;
+            color: #f1c40f;
+        }
+        .loading-overlay.hidden {
+            display: none;
+        }
         @media (max-width: 480px) {
-            .birthday-header h1 {
-                font-size: 2.2rem;
-                padding: 0.1rem 0.8rem;
-            }
-            .board-wrapper {
-                padding: 0.8rem 0.5rem 1.5rem;
-                border-radius: 40px;
-            }
-            .add-box {
-                padding: 1rem 0.7rem 1.2rem;
-                border-radius: 40px;
-            }
-            .input-row textarea {
-                min-height: 60px;
-                padding: 0.6rem 1rem;
-            }
-            .action-btn {
-                font-size: 1.2rem;
-                padding: 0.7rem 0.8rem;
-            }
-            .board-grid {
-                grid-template-columns: 1fr 1fr;
-                gap: 1rem 0.8rem;
-            }
-            .birthday-box {
-                padding: 0.8rem 0.5rem 0.6rem;
-                border-radius: 32px 12px 32px 12px;
-            }
-            .box-image {
-                border-width: 4px;
-                border-radius: 28px 6px 28px 6px;
-            }
-            .box-image-placeholder {
-                border-width: 4px;
-                border-radius: 28px 6px 28px 6px;
-                font-size: 0.85rem;
-                min-height: 90px;
-            }
-            .box-message {
-                font-size: 0.95rem;
-                padding: 0.4rem 0.7rem;
-            }
-            .delete-btn {
-                font-size: 1.3rem;
-                padding: 0.1rem 0.6rem;
-            }
-            .empty-board {
-                font-size: 1.4rem;
-                padding: 1.8rem 0.8rem;
-            }
+            .birthday-header h1 { font-size: 2.2rem; padding: 0.1rem 0.8rem; }
+            .board-wrapper { padding: 0.8rem 0.5rem 1.5rem; border-radius: 40px; }
+            .add-box { padding: 1rem 0.7rem 1.2rem; border-radius: 40px; }
+            .input-row textarea { min-height: 60px; padding: 0.6rem 1rem; }
+            .action-btn { font-size: 1.2rem; padding: 0.7rem 0.8rem; }
+            .board-grid { grid-template-columns: 1fr 1fr; gap: 1rem 0.8rem; }
+            .birthday-box { padding: 0.8rem 0.5rem 0.6rem; border-radius: 32px 12px 32px 12px; }
+            .box-image { border-width: 4px; border-radius: 28px 6px 28px 6px; }
+            .box-image-placeholder { border-width: 4px; border-radius: 28px 6px 28px 6px; font-size: 0.85rem; min-height: 90px; }
+            .box-message { font-size: 0.95rem; padding: 0.4rem 0.7rem; }
+            .delete-btn { font-size: 1.3rem; padding: 0.1rem 0.6rem; }
+            .empty-board { font-size: 1.4rem; padding: 1.8rem 0.8rem; }
         }
-
         @media (max-width: 380px) {
-            .board-grid {
-                grid-template-columns: 1fr;
-                gap: 1.2rem;
-            }
-            .birthday-header h1 {
-                font-size: 1.8rem;
-            }
-            .file-upload-wrapper input[type="file"] {
-                font-size: 0.8rem;
-                min-width: 100px;
-            }
+            .board-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+            .birthday-header h1 { font-size: 1.8rem; }
+            .file-upload-wrapper input[type="file"] { font-size: 0.8rem; min-width: 100px; }
         }
-
         @media (min-width: 1200px) {
-            .board-grid {
-                grid-template-columns: repeat(4, 1fr);
-            }
+            .board-grid { grid-template-columns: repeat(4, 1fr); }
         }
     </style>
 </head>
 <body>
+
+<div class="loading-overlay" id="loadingOverlay">
+    <i class="fas fa-cloud-upload-alt fa-pulse"></i>
+    <span>Connecting to Birthday Cloud...</span>
+</div>
 
 <div class="board-wrapper">
     <div class="birthday-header">
         <h1><i class="fas fa-crown"></i> Dad's Board <i class="fas fa-birthday-cake"></i></h1>
         <div class="subhead"><i class="fas fa-heart" style="color:#c0392b;"></i>  add a box with photo & message</div>
         <div class="sync-status" id="syncStatus">
-            <i class="fas fa-cloud"></i> <span id="syncText">Synced</span>
+            <i class="fas fa-cloud"></i> <span id="syncText">Connecting...</span>
         </div>
     </div>
 
@@ -479,49 +420,41 @@
         <div class="hint-text"><i class="fas fa-info-circle"></i> Press Ctrl+Enter to add</div>
     </div>
 
-    <div id="boardGrid" class="board-grid">
-        <!-- empty state injected by JS -->
-    </div>
+    <div id="boardGrid" class="board-grid"></div>
 </div>
 
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/10.7.1/firebase-firestore-compat.js"></script>
+
 <script>
+    // ============================================================
+    // 🔥 YOUR FIREBASE CONFIG - PASTE THIS (from Firebase console)
+    // ============================================================
+    const firebaseConfig = {
+        apiKey: "AIzaSyB3oROCTVL7UeL6upFFZXDK1fQuYYbAW",
+        authDomain: "community-gallery-c8b8e.firebaseapp.com",
+        projectId: "community-gallery-c8b8e",
+        storageBucket: "community-gallery-c8b8e.firebasestorage.app",
+        messagingSenderId: "858038060013",
+        appId: "1:858038060013:web:bed95d6ed50138d6129de4",
+        measurementId: "G-G6TQG18LSZ"
+    };
+    // ============================================================
+
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+
     (function() {
-        // ----- DOM refs -----
         const boardGrid = document.getElementById('boardGrid');
         const messageInput = document.getElementById('messageInput');
         const imageInput = document.getElementById('imageInput');
         const addBtn = document.getElementById('addMessageBtn');
         const syncText = document.getElementById('syncText');
+        const loadingOverlay = document.getElementById('loadingOverlay');
 
-        // ----- Broadcast Channel for cross-device sync -----
-        const channel = new BroadcastChannel('dad_birthday_channel');
-
-        // ----- Storage key -----
-        const STORAGE_KEY = 'dadBirthdayBoxes';
-
-        // ----- State -----
+        const COLLECTION = 'birthdayBoxes';
         let boxes = [];
 
-        // ----- Load from localStorage -----
-        function loadFromStorage() {
-            try {
-                const stored = localStorage.getItem(STORAGE_KEY);
-                if (stored) {
-                    boxes = JSON.parse(stored);
-                } else {
-                    boxes = [];
-                }
-            } catch (e) {
-                boxes = [];
-            }
-            boxes = boxes.filter(b => b && typeof b.text === 'string');
-        }
-
-        function saveToStorage() {
-            localStorage.setItem(STORAGE_KEY, JSON.stringify(boxes));
-        }
-
-        // ----- Render -----
         function renderBoard() {
             if (!boardGrid) return;
             boardGrid.innerHTML = '';
@@ -565,11 +498,11 @@
                 delBtn.setAttribute('aria-label', 'Delete box');
                 delBtn.addEventListener('click', function(e) {
                     e.stopPropagation();
-                    deleteBox(index);
+                    deleteBox(box.id);
                 });
                 delBtn.addEventListener('touchend', function(e) {
                     e.preventDefault();
-                    deleteBox(index);
+                    deleteBox(box.id);
                 });
                 actionsDiv.appendChild(delBtn);
                 card.appendChild(actionsDiv);
@@ -578,19 +511,73 @@
             });
         }
 
-        // ----- Delete -----
-        function deleteBox(index) {
-            if (index >= 0 && index < boxes.length) {
-                boxes.splice(index, 1);
-                saveToStorage();
-                renderBoard();
-                // broadcast deletion
-                channel.postMessage({ type: 'delete', index: index, all: boxes });
-                updateSyncStatus('Synced');
-            }
+        function setSyncStatus(text) {
+            syncText.textContent = text;
         }
 
-        // ----- Add new box -----
+        function loadFromFirestore() {
+            setSyncStatus('Loading...');
+            loadingOverlay.classList.remove('hidden');
+
+            db.collection(COLLECTION)
+                .orderBy('createdAt', 'asc')
+                .onSnapshot((snapshot) => {
+                    loadingOverlay.classList.add('hidden');
+                    const newBoxes = [];
+                    snapshot.forEach((doc) => {
+                        const data = doc.data();
+                        newBoxes.push({
+                            id: doc.id,
+                            text: data.text || '',
+                            imageDataUrl: data.imageDataUrl || null,
+                            createdAt: data.createdAt || Date.now()
+                        });
+                    });
+                    boxes = newBoxes;
+                    renderBoard();
+                    setSyncStatus('Synced ✓');
+                }, (error) => {
+                    loadingOverlay.classList.add('hidden');
+                    console.error('Firestore error:', error);
+                    setSyncStatus('⚠️ Error');
+                    alert('Failed to load data from Firebase. Check console.');
+                });
+        }
+
+        function addToFirestore(text, imageDataUrl) {
+            setSyncStatus('Saving...');
+            db.collection(COLLECTION).add({
+                text: text,
+                imageDataUrl: imageDataUrl || null,
+                createdAt: Date.now()
+            })
+            .then(() => {
+                setSyncStatus('Synced ✓');
+                messageInput.value = '';
+                imageInput.value = '';
+                messageInput.focus();
+            })
+            .catch((error) => {
+                console.error('Error adding:', error);
+                setSyncStatus('⚠️ Error');
+                alert('Failed to save. Check console.');
+            });
+        }
+
+        function deleteBox(docId) {
+            if (!docId) return;
+            setSyncStatus('Deleting...');
+            db.collection(COLLECTION).doc(docId).delete()
+                .then(() => {
+                    setSyncStatus('Synced ✓');
+                })
+                .catch((error) => {
+                    console.error('Error deleting:', error);
+                    setSyncStatus('⚠️ Error');
+                    alert('Failed to delete. Check console.');
+                });
+        }
+
         function addNewBox() {
             const text = messageInput.value.trim();
             if (text === '') {
@@ -602,90 +589,19 @@
             if (file && file.type.startsWith('image/')) {
                 const reader = new FileReader();
                 reader.onload = function(e) {
-                    const dataUrl = e.target.result;
-                    pushBox(text, dataUrl);
+                    addToFirestore(text, e.target.result);
                 };
                 reader.onerror = function() {
-                    alert('⚠️ Could not read image. Try another file.');
+                    alert('⚠️ Could not read image.');
                 };
                 reader.readAsDataURL(file);
             } else {
-                pushBox(text, null);
+                addToFirestore(text, null);
             }
         }
 
-        function pushBox(text, imageDataUrl) {
-            const newBox = {
-                text: text,
-                imageDataUrl: imageDataUrl || null,
-            };
-            boxes.push(newBox);
-            saveToStorage();
-            renderBoard();
+        loadFromFirestore();
 
-            // broadcast to other devices
-            channel.postMessage({ type: 'add', box: newBox, all: boxes });
-
-            // reset
-            messageInput.value = '';
-            imageInput.value = '';
-            messageInput.focus();
-            updateSyncStatus('Synced');
-        }
-
-        // ----- Sync status UI -----
-        function updateSyncStatus(status) {
-            syncText.textContent = status;
-        }
-
-        // ----- Handle incoming messages from other devices -----
-        channel.onmessage = function(event) {
-            const data = event.data;
-            if (!data) return;
-
-            // Update sync status
-            updateSyncStatus('Syncing...');
-
-            if (data.type === 'add' && data.box) {
-                // Add the new box from another device
-                boxes.push(data.box);
-                saveToStorage();
-                renderBoard();
-                updateSyncStatus('Synced');
-            } else if (data.type === 'delete' && data.all) {
-                // Replace entire state with the broadcasted state
-                boxes = data.all;
-                saveToStorage();
-                renderBoard();
-                updateSyncStatus('Synced');
-            } else if (data.type === 'fullSync' && data.all) {
-                // Full sync from another device
-                boxes = data.all;
-                saveToStorage();
-                renderBoard();
-                updateSyncStatus('Synced');
-            }
-        };
-
-        // ----- Broadcast full state on load (to help new devices catch up) -----
-        function broadcastFullState() {
-            channel.postMessage({ type: 'fullSync', all: boxes });
-        }
-
-        // ----- Init -----
-        loadFromStorage();
-        renderBoard();
-
-        // After a short delay, broadcast full state to let other devices know
-        setTimeout(broadcastFullState, 500);
-
-        // Also broadcast when we load from storage (on page load)
-        window.addEventListener('load', function() {
-            // Re-broadcast after everything is loaded
-            setTimeout(broadcastFullState, 800);
-        });
-
-        // ----- Event listeners -----
         addBtn.addEventListener('click', addNewBox);
 
         messageInput.addEventListener('keydown', function(e) {
@@ -695,21 +611,7 @@
             }
         });
 
-        // Optional: sync when another tab updates storage (fallback)
-        window.addEventListener('storage', function(e) {
-            if (e.key === STORAGE_KEY && e.newValue) {
-                try {
-                    const newBoxes = JSON.parse(e.newValue);
-                    if (newBoxes) {
-                        boxes = newBoxes;
-                        renderBoard();
-                        updateSyncStatus('Synced');
-                    }
-                } catch (err) {}
-            }
-        });
-
-        console.log('🎂 Happy Birthday, Dad! 🎈 (Cross-device sync active)');
+        console.log('🎂 Happy Birthday, Dad! 🎈 (Firebase sync enabled)');
     })();
 </script>
 </body>
